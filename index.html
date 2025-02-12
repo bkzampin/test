@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rectangle and Image Example</title>
+    <link rel="stylesheet" href="https://use.typekit.net/yzp7rlf.css"> <!-- Add the Typekit font link -->
+    <style>
+        body {
+            background-color: #224159; /* Background color */
+            margin: 0; /* Remove default margin */
+            height: 100vh; /* Full viewport height */
+            position: relative; /* Position relative for absolute positioning of children */
+        }
+
+        .rectangle {
+            background-color: #48657f; /* Rectangle color */
+            width: 1173px; /* Rectangle width */
+            height: 2851px; /* Rectangle height */
+            position: absolute; /* Position absolute to place it relative to the body */
+            top: 100px; /* 100px down from the top */
+            left: 100px; /* 100px right from the left */
+            padding: 20px; /* Padding inside the rectangle */
+            box-sizing: border-box; /* Include padding in width/height */
+        }
+
+        /* Styles for the text column */
+        .text-column {
+            color: #dbdddc; /* Text color */
+            font-size: 25px; /* Font size */
+            line-height: 2.5; /* Line height for readability */
+            width: 400px; /* Set width to 400px */
+            max-height: 80%; /* Relative height; adjust as needed */
+            overflow-y: auto; /* Allow scrolling if the content exceeds max-height */
+            margin-left: 50px;
+            margin-top: 500px; /* Move the text column down by 500px */
+            font-family: "komet", sans-serif; /* Apply the Komet font */
+            font-weight: 400; /* Set font weight */
+            font-style: normal; /* Set font style */
+        }
+
+        /* Styles for the main image */
+        .story-image {
+            width: 1000px; /* Adjust the width as needed */
+            height: auto; /* Maintain aspect ratio */
+            position: absolute; /* Position absolute */
+            top: 100px; /* Adjust down from the top */
+            left: 100px; /* Adjust right from the left */
+        }
+
+        /* Styles for the overlapping image */
+        .overlapping-image {
+            width: 1000px; /* Adjust width here */
+            height: auto; /* Maintain aspect ratio */
+            position: absolute; /* Position absolute */
+            top: 700px; /* Adjust down from the top */
+            right: 20px; /* Adjust from the right */
+            z-index: 10; /* Higher z-index to ensure it overlaps */
+        }
+
+        /* Styles for the slideshow */
+        /* Styles for the slideshow */
+ .slideshow-container {
+    position: absolute; /* Position absolute */
+    top: 50px; /* Align with the top of the rectangle */
+    right: 110px; /* Adjust from the right */
+    width: 700px; /* Set width to 500px */
+    height: auto; /* Relative height */
+    overflow: hidden; /* Hide overflow */
+    border: 2px solid #dbdddc; /* Optional: border around the slideshow */
+    border-radius: 10px; /* Optional: rounded corners */
+    margin-right: 100px; /* Adjust margin as needed */
+    display: flex; /* Use flexbox */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+       background-color: #436a9f; /* Fill the container with black */
+
+}
+
+.mySlides {
+    display: none; /* Hide all images by default */
+    width: 100%; /* Full width of the slideshow container */
+    height: auto; /* Maintain aspect ratio */
+    max-width: 600px; /* Set maximum width to 500px */
+    object-fit: contain; /* Ensure the image fits within the container */
+}
+       .custom-width {
+        width: 400px; /* Set the desired width */
+        height: auto; /* Maintain aspect ratio */
+        object-fit: contain; /* Ensure the image fits within the container */
+    }
+    /* Navigation buttons */
+.prev, .next {
+    cursor: pointer;
+    position: absolute; /* Position absolute */
+    top: 10px; /* Position near the top */
+    width: auto;
+    padding: 16px;
+    color: #dbdddc; /* Button text color */
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease; /* Transition effect */
+    border: none; /* No border */
+    user-select: none; /* Prevent text selection */
+}
+
+.prev {
+    left: 10px; /* Position at the left */
+}
+
+.next {
+    right: 10px; /* Position at the right */
+}
+    </style>
+</head>
+<body>
+
+    <div class="rectangle"> <!-- Rectangle element -->
+        <div class="text-column">
+            <p>I chose to present this story as sketchbook entries because it reflects my passion for art; creating it as a visual sketchbook-diary adds a personal, meaningful touch to the story I’m sharing. It begins in 2010, when I was 5 - fast-forwards to the present day as I navigate school, facing challenges of self-doubt and creative block. By the end of the story, I had rediscovered my passion for art and learned to appreciate the process of creation itself, rather than focusing solely on the result. All illustrations were hand-drawn in Procreate. For some sections, I used Firefly for reference photos. I used them to create my own drawings in my style!</p>
+        </div>
+    </div>
+    
+    <img class="story-image" src="1.story1.png" alt="Story Image"> <!-- Main Image -->
+    <img class="overlapping-image" src="storyimage.png" alt="Overlapping Image"> <!-- Overlapping Image -->
+
+<div class="slideshow-container"> <!-- Slideshow Container -->
+    <img class="mySlides" src="story1.png" alt="Image 2">
+    <img class="mySlides custom-width" src="story3.png" alt="Image 3"> <!-- Custom width applied here -->
+    <img class="mySlides custom-width" src="story4.png" alt="Image 4">
+    <img class="mySlides" src="story5.png" alt="Image 5">
+    <img class="mySlides" src="story6.png" alt="Image 6">
+    <img class="mySlides" src="story7.png" alt="Image 7">
+    <img class="mySlides" src="story8.png" alt="Image 8">
+    <img class="mySlides custom-width" src="story9.png" alt="Image 9">
+    <img class="mySlides" src="story10.png" alt="Image 10">
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            if (n > slides.length) { slideIndex = 1 }    
+            if (n < 1) { slideIndex = slides.length }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            slides[slideIndex - 1].style.display = "block";  
+        }
+    </script>
+
+</body>
+</html>
